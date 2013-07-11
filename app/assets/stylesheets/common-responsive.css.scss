@@ -18,14 +18,12 @@
   }
 
   .pagination {
-    ul {
-      li {
-        display: none;
-      }
+    li {
+      display: none;
+    }
 
-      li.previous_page, li.next {
-        display: inline;
-      }
+    li.previous_page, li.next {
+      display: inline;
     }
   }
 }

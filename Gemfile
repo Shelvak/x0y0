@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0'
 
 gem 'pg'
-gem 'jquery-rails'
-gem 'turbolinks'
 gem 'will_paginate'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'devise', '~> 3.0.0.rc'
@@ -17,13 +15,15 @@ gem 'sidekiq'
 gem 'capistrano'
 
 # Old assets group
-gem 'sass-rails', '4.0.0.rc1'
+gem 'sass-rails', '4.0.0'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'turbolinks'
 
 group :development do
-  gem 'unicorn'
-  gem 'unicorn-rails'
+  gem 'thin'
 end
 
 group :test do
