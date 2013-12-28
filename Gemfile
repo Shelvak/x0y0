@@ -1,14 +1,18 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 gem 'pg'
 gem 'will_paginate'
 gem 'simple_form'
-gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
+gem 'paper_trail'
 gem 'magick_columns'
 gem 'validates_timeliness'
+
+# Deploy gems
 gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
 
 # Auth & Mailing Gems
 gem 'devise'
