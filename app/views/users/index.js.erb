@@ -1,6 +1,6 @@
 $('table.resource-list tbody').append('<%= j render(@users) %>');
 <% if @users.next_page %>
-  $('.pagination-container').replaceWith('<%= j pagination_links(@users) %>');
+  $('.pagination-container').replaceWith('<%= j paginate(@users) %>');
 <% else %>
   $('.pagination-container').remove();
 <% end %>

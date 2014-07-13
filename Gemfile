@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.4'
 
 gem 'pg'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'simple_form'
 gem 'paper_trail'
 gem 'magick_columns'
@@ -21,20 +21,20 @@ gem 'cancan'
 gem 'role_model'
 gem 'sidekiq'
 
-# Old assets group
+# Assets group
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks'
+gem 'kaminari-bootstrap'
+
 
 group :development do
   gem 'thin'
 end
 
 group :test do
-  gem 'turn'
   gem 'selenium-webdriver', require: false
   gem 'capybara', require: false
   gem 'database_cleaner'

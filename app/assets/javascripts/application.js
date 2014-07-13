@@ -11,14 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery_ujs
 //= require jquery-customs/jquery.ui.datepicker-es
 //= require jquery-customs/jquery-ui-timepicker-addon
-//= require twitter/bootstrap
+//= require bootstrap
 //= require inspector
-//= require turboevents
-//= require turbolinks
 //= require common
 //= require date_pickers
 //= require endless_pagination

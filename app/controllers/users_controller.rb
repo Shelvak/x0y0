@@ -2,15 +2,15 @@ class UsersController < ApplicationController
   include Users::Profile
 
   before_action :authenticate_user!
-  
+
   check_authorization
   load_and_authorize_resource
-  
+
   # GET /users
   def index
     @title = t 'view.users.index_title'
     @searchable = true
-    @users = @users.filtered_list(params[:q]).page(params[:page])
+    @users = @users.filtered_list(params[:q]).page(params[:page]).per(1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
         format.html { render action: 'edit' }
       end
     end
-    
+
   rescue ActiveRecord::StaleObjectError
     flash.alert = t 'view.users.stale_object_error'
     redirect_to edit_user_url(@user)
@@ -76,9 +76,9 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
     end
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(
       :name, :lastname, :email, :password, :password_confirmation, :role, :remember_me, :lock_version
