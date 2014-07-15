@@ -1,0 +1,19 @@
+<% model = f.object %>
+<% if model.errors.any? %>
+  <div id="error_explanation">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= t 'errors.template.header', count: model.errors.count, model: model.class.model_name.human %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% model.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

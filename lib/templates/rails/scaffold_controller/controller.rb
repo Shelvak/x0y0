@@ -1,11 +1,11 @@
 <% module_namespacing do -%>
 class <%= controller_class_name %>Controller < ApplicationController
   before_action :set_<%= singular_table_name %>, only:  [:show, :edit, :update, :destroy]
-  
+
   # GET <%= route_url %>
   def index
     @title = t('view.<%= plural_table_name %>.index_title')
-    @<%= plural_table_name %> = <%= class_name %>.page(params[:page])
+    @<%= plural_table_name %> = <%= orm_class.all class_name %>.page(params[:page])
   end
 
   # GET <%= route_url %>/1
@@ -43,7 +43,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @title = t('view.<%= plural_table_name %>.edit_title')
 
     respond_to do |format|
-      if @<%= orm_instance.update_attributes("#{singular_table_name}_params") %>
+      if @<%= orm_instance.update("#{singular_table_name}_params") %>
         format.html { redirect_to @<%= singular_table_name %>, notice: t('view.<%= plural_table_name %>.correctly_updated') }
       else
         format.html { render action: 'edit' }
@@ -61,12 +61,12 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   private
 
-  def set_<%= singular_table_name %>
-    @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
-  end
+    def set_<%= singular_table_name %>
+      @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+    end
 
-  def <%= singular_table_name %>_params
-    params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |a| ":#{a.name}" }.join(', ') %>)
-  end
+    def <%= singular_table_name %>_params
+      params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |a| ":#{a.name}" }.join(', ') %>)
+    end
 end
 <% end -%>

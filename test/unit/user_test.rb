@@ -7,14 +7,14 @@ class UserTest < ActiveSupport::TestCase
 
   test 'create' do
     assert_difference ['User.count', 'PaperTrail::Version.count'] do
-      @user = User.create(Fabricate.attributes_for(:user))
+      User.create! Fabricate.attributes_for(:user)
     end
   end
 
   test 'update' do
     assert_difference 'PaperTrail::Version.count' do
       assert_no_difference 'User.count' do
-        assert @user.update_attributes(name: 'Updated')
+        @user.update!(name: 'Updated')
       end
     end
 
@@ -33,10 +33,7 @@ class UserTest < ActiveSupport::TestCase
 
     assert @user.invalid?
     assert_equal 2, @user.errors.size
-    assert_equal [error_message_from_model(@user, :name, :blank)],
-      @user.errors[:name]
-    assert_equal [error_message_from_model(@user, :email, :blank)],
-      @user.errors[:email]
+    [:name, :email].each { |attr| assert_equal_messages @user, attr, :blank }
   end
 
   test 'validates well formated attributes' do
@@ -44,8 +41,7 @@ class UserTest < ActiveSupport::TestCase
 
     assert @user.invalid?
     assert_equal 1, @user.errors.size
-    assert_equal [error_message_from_model(@user, :email, :invalid)],
-      @user.errors[:email]
+    assert_equal_messages @user, :email, :invalid
   end
 
   test 'validates unique attributes' do
@@ -54,8 +50,7 @@ class UserTest < ActiveSupport::TestCase
 
     assert @user.invalid?
     assert_equal 1, @user.errors.size
-    assert_equal [error_message_from_model(@user, :email, :taken)],
-      @user.errors[:email]
+    assert_equal_messages @user, :email, :taken
   end
 
   test 'validates confirmated attributes' do
@@ -63,9 +58,7 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = 'admin125'
     assert @user.invalid?
     assert_equal 1, @user.errors.count
-    assert_equal [
-      error_message_from_model(@user, :password_confirmation, :confirmation)
-    ], @user.errors[:password_confirmation]
+    assert_equal_messages @user, :password_confirmation, :confirmation
   end
 
   test 'validates length of _short_ attributes' do
@@ -73,9 +66,7 @@ class UserTest < ActiveSupport::TestCase
 
     assert @user.invalid?
     assert_equal 1, @user.errors.count
-    assert_equal [
-      error_message_from_model(@user, :password, :too_short, count: 6)
-    ], @user.errors[:password]
+    assert_equal_messages @user, :password, :too_short, count: 6
   end
 
   test 'validates length of _long_ attributes' do
@@ -85,15 +76,9 @@ class UserTest < ActiveSupport::TestCase
 
     assert @user.invalid?
     assert_equal 3, @user.errors.count
-    assert_equal [
-      error_message_from_model(@user, :name, :too_long, count: 255)
-    ], @user.errors[:name]
-    assert_equal [
-      error_message_from_model(@user, :lastname, :too_long, count: 255)
-    ], @user.errors[:lastname]
-    assert_equal [
-      error_message_from_model(@user, :email, :too_long, count: 255)
-    ], @user.errors[:email]
+    [:name, :lastname, :email].each do |attr|
+      assert_equal_messages @user, attr, :too_long, count: 255
+    end
   end
 
   test 'magick search' do

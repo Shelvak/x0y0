@@ -9,14 +9,14 @@
             <th><%= User.human_attribute_name 'name' %></th>
             <th><%= User.human_attribute_name 'lastname' %></th>
             <th>
-              <col-md- class="visible-desktop">
+              <span class="visible-md visible-lg">
                 <%= User.human_attribute_name 'email' %>
-              </col-md->
+              </span>
             </th>
-            <th colcol-md-="2">
+            <th colspan="2">
               <%= link_to(
                   t('view.users.new', default: :'label.new'),
-                  new_user_path, class: 'btn btn-mini'
+                  new_user_path, class: 'btn btn-default btn-xs'
                 ) if can? :create, User
               %>
             </th>

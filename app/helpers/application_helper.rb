@@ -29,30 +29,33 @@ module ApplicationHelper
     end
   end
 
-  def iconic_link(icon, *args)
-    options = args.extract_options!
+  def iconic_link(options = {}, *args)
+    opts = args.extract_options!
 
-    options['class'] ||= 'iconic'
-    options['title'] ||= 'iconic'
-    options['data-show-tooltip'] ||= true
+    opts['data-show-tooltip'] ||= true
+    opts['title'] ||= options['title']
 
-    link_to icon, *args, options
+    link_to *args, opts do
+      content_tag :span, nil, class: "glyphicon #{options['icon']}"
+    end
   end
 
   def link_to_show(*args)
     options = args.extract_options!
 
     options['title'] ||= t('label.show')
+    options['icon']  ||= 'glyphicon-search'
 
-    iconic_link '&#xe074;'.html_safe, *args, options
+    iconic_link options, *args
   end
 
   def link_to_edit(*args)
     options = args.extract_options!
 
     options['title'] ||= t('label.edit')
+    options['icon']  ||= 'glyphicon-pencil'
 
-    iconic_link '&#x270e;'.html_safe, *args, options
+    iconic_link options, *args
   end
 
   def link_to_destroy(*args)
@@ -61,7 +64,8 @@ module ApplicationHelper
     options['title'] ||= t('label.delete')
     options['method'] ||= :delete
     options['data-confirm'] ||= t('messages.confirmation')
+    options['icon']  ||= 'glyphicon-trash'
 
-    iconic_link '&#xe05a;'.html_safe, *args, options
+    iconic_link options, *args
   end
 end

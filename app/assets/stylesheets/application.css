@@ -10,12 +10,8 @@
  *
  *= require bootstrap
  *= require bootstrap-theme
- *= require body_padding
+ *= require main
  *= require jquery-ui
  *= require jquery-customs/ui-custom
- *= require fonts
- *= require common
- *= require common-responsive
- *= require devise
  *= require users
 */

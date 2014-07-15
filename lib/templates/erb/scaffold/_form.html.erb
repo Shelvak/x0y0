@@ -1,13 +1,17 @@
 <%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
-  <%%= f.error_notification %>
+  <%%= render 'shared/error_explanation', f: f %>
 
   <div class="form-inputs">
-  <%- attributes.each do |attribute| -%>
-    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
-  <%- end -%>
+    <div class="row">
+      <div class="col-md-6">
+      <%- attributes.each do |attribute| -%>
+        <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
+      <%- end -%>
+      </div>
+    </div>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions well well-sm">
     <div class="pull-right"><%%= yield :form_actions %></div>
     <%%= f.button :submit, class: 'btn-primary' %>
   </div>

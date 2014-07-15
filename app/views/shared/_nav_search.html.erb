@@ -1,5 +1,6 @@
-<% classes = ['navbar-search', 'pull-left'] %>
+<% classes = ['navbar-form', 'navbar-left '] %>
 <% classes << 'hidden' unless @searchable %>
+
 <%= form_for :search, method: :get, html: { class: classes.join(' ') } do |f| %>
-  <%= text_field_tag :q, params[:q], class: 'search-query col-md-2', placeholder: t('label.search') %>
+  <%= text_field_tag :q, params[:q], class: 'form-control col-md-4', placeholder: t('label.search') %>
 <% end %>
