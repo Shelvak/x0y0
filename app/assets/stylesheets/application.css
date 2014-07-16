@@ -10,8 +10,8 @@
  *
  *= require bootstrap
  *= require bootstrap-theme
- *= require main
  *= require jquery-ui
  *= require jquery-customs/ui-custom
  *= require users
+ *= require main
 */
