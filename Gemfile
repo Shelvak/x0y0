@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.1'
 
 gem 'pg'
 gem 'kaminari'
 gem 'simple_form'
-gem 'paper_trail'
+gem 'paper_trail', '4.0.0.rc1'
 gem 'magick_columns'
 gem 'validates_timeliness'
 
@@ -27,7 +27,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'kaminari-bootstrap'
+gem 'bootstrap-material-design'
 
 
 group :development do

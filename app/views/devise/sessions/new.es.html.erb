@@ -15,7 +15,15 @@
           </div>
 
           <div class="form-actions">
+            <a href="javascript:void(0)" class="btn btn-default">Default</a>
+<a href="javascript:void(0)" class="btn btn-primary">Primary</a>
+<a href="javascript:void(0)" class="btn btn-success">Success</a>
+<a href="javascript:void(0)" class="btn btn-info">Info</a>
+<a href="javascript:void(0)" class="btn btn-warning">Warning</a>
+<a href="javascript:void(0)" class="btn btn-danger">Danger</a>
+<a href="javascript:void(0)" class="btn btn-link">Link</a>
             <%= render partial: 'shared/hidden_submit', locals: { f: f } %>
+            <%= f.button :submit, 'Ola k ase', class: 'btn-primary',data: { 'ripple-color' => "#F0F0F0" } %>
             <%= show_button_dropdown(
               link_to('Ingresar', '#', class: 'btn btn-primary submit'),
               devise_links_es
@@ -37,3 +45,6 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+</script>

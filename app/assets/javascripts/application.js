@@ -15,10 +15,12 @@
 //= require jquery_ujs
 //= require jquery-customs/jquery.ui.datepicker-es
 //= require jquery-customs/jquery-ui-timepicker-addon
-//= require bootstrap
 //= require inspector
 //= require common
 //= require date_pickers
 //= require endless_pagination
 //= require mobile
 //= require users
+//= require bootstrap
+//= require ripples
+//= require material

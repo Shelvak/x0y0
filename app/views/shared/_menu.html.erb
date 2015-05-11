@@ -1,38 +1,50 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="btn btn-default navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="iconic">&#xe055;</span>
-      </a>
-
-      <%= link_to t('app_name'), root_path, class: 'navbar-brand' %>
-    </div>
-
-    <% if user_signed_in? %>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <%= show_menu_link(
-            name: 'users', controllers: 'users', path: users_path
-          ) if can?(:read, User) %>
-        </ul>
-        <%= render partial: 'shared/nav_search' %>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to(
-              current_user.email, edit_profile_user_path(current_user),
-              'title' => t('view.users.edit_profile'),
-              'data-show-tooltip' => true
-            ) %>
-          </li>
-          <li>
-            <%= link_to(
-              '&#x2192;'.html_safe, destroy_user_session_path,
-              title: t('menu.actions.logout'), method: :delete,
-              id: 'logout', 'data-show-tooltip' => true
-            ) %>
-          </li>
-        </ul>
+<div class="row">
+  <div class="col-lg s12">
+    <div class="bs-component">
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#(0)">Brand</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#(0)">Active</a></li>
+            <li><a href="#(0)">Link</a></li>
+            <li class="dropdown">
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#(0)">Action</a></li>
+                <li><a href="#(0)">Another action</a></li>
+                <li><a href="#(0)">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Dropdown header</li>
+                <li><a href="#(0)">Separated link</a></li>
+                <li><a href="#(0)">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <input type="text" class="form-control col-lg-8" placeholder="Search">
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#(0)">Link</a></li>
+            <li class="dropdown">
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#(0)">Action</a></li>
+                <li><a href="#(0)">Another action</a></li>
+                <li><a href="#(0)">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#(0)">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
