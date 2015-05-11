@@ -2,7 +2,6 @@ module UsersHelper
   def show_user_roles_options(form)
     options = User.valid_roles.map { |r| [t("view.users.roles.#{r}"), r] }
 
-    form.input :role, collection: options, prompt: false,
-      input_html: { class: nil }
+    form.input :role, as: :radio_buttons, collection: options
   end
 end

@@ -13,6 +13,8 @@
       confirmation_period_expired: 'debe ser confirmado en %{period}, por favor, pide uno nuevo'
 
   devise:
+    recover:
+      forgot_password: '¿Olvidaste tu contraseña?'
     failure:
       already_authenticated: 'Ya está conectado/a.'
       unauthenticated: 'Necesita acceder a su cuenta o registrarse antes de continuar.'

@@ -1,0 +1,26 @@
+<ul class="navbar-nav nav navbar-right">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <i class="mdi-action-face-unlock"></i>
+      <b class="caret"></b>
+    </a>
+
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to(
+          current_user.email, edit_profile_user_path(current_user),
+          'title' => t('view.users.edit_profile'),
+          'data-show-tooltip' => true
+        ) %>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to(
+          '&#x2192;'.html_safe, destroy_user_session_path,
+          title: t('menu.actions.logout'), method: :delete,
+          id: 'logout', 'data-show-tooltip' => true
+        ) %>
+      </li>
+    </ul>
+  </li>
+</ul>

@@ -36,7 +36,7 @@ module ApplicationHelper
     opts['title'] ||= options['title']
 
     link_to *args, opts do
-      content_tag :span, nil, class: "glyphicon #{options['icon']}"
+      content_tag :span, nil, class: options['icon']
     end
   end
 
@@ -44,7 +44,7 @@ module ApplicationHelper
     options = args.extract_options!
 
     options['title'] ||= t('label.show')
-    options['icon']  ||= 'glyphicon-search'
+    options['icon']  ||= 'mdi-action-search'
 
     iconic_link options, *args
   end
@@ -53,7 +53,7 @@ module ApplicationHelper
     options = args.extract_options!
 
     options['title'] ||= t('label.edit')
-    options['icon']  ||= 'glyphicon-pencil'
+    options['icon']  ||= 'mdi-editor-border-color'
 
     iconic_link options, *args
   end
@@ -64,7 +64,7 @@ module ApplicationHelper
     options['title'] ||= t('label.delete')
     options['method'] ||= :delete
     options['data-confirm'] ||= t('messages.confirmation')
-    options['icon']  ||= 'glyphicon-trash'
+    options['icon']  ||= 'mdi-action-delete'
 
     iconic_link options, *args
   end

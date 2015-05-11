@@ -3,7 +3,7 @@
 module DeviseHelper
   def devise_links_es
     @_devise_links = []
-    
+
     add_link_to_back
     add_link_to_register
     add_link_to_forgot_password
@@ -64,6 +64,16 @@ module DeviseHelper
           omniauth_authorize_path(resource_name, provider)
         )
       end
+    end
+  end
+
+  def password_recovery_link
+    if devise_mapping.recoverable?
+      link_to(
+        t('devise.recover.forgot_password'),
+        new_password_path(resource_name),
+        id: 'reset-password'
+      )
     end
   end
 end

@@ -1,6 +1,6 @@
 module Users::Roles
   extend ActiveSupport::Concern
-  
+
   included do
     include RoleModel
 
@@ -8,7 +8,7 @@ module Users::Roles
 
     after_initialize :set_default_role
   end
-  
+
   def set_default_role
     self.role ||= :regular
   end
@@ -16,7 +16,7 @@ module Users::Roles
   def role
     self.roles.first.try(:to_sym)
   end
-  
+
   def role=(role)
     self.roles = [role]
   end

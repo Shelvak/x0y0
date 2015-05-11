@@ -4,15 +4,14 @@
   <div class="form-inputs">
     <div class="row">
       <div class="col-md-6">
-        <%= f.input :name, input_html: { autofocus: true, maxlength: 255 } %>
-        <%= f.input :lastname, input_html: { maxlength: 255 } %>
-        <%= f.input :email, required: true, input_html: { maxlength: 255 } %>
+        <%= f.input :name, input_html: { autofocus: true } %>
+        <%= f.input :lastname %>
+        <%= f.input :email, required: true %>
 
         <% if ['new', 'create'].include?(action_name) %>
-          <%= f.input :password, required: true, input_html: { maxlength: 255 } %>
-          <%= f.input :password_confirmation, input_html: { maxlength: 255 } %>
+          <%= f.input :password, required: true %>
+          <%= f.input :password_confirmation, required: true %>
         <% end %>
-
 
         <%= show_user_roles_options(f) if can?(:assign_roles, @user) %>
         <%= f.input :lock_version, as: :hidden %>
@@ -22,6 +21,6 @@
 
   <div class="form-actions">
     <div class="pull-right"><%= yield :form_actions %></div>
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

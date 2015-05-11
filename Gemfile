@@ -1,18 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.1'
 
 gem 'pg'
 gem 'kaminari'
 gem 'simple_form'
-gem 'paper_trail'
+gem 'paper_trail', '4.0.0.rc1'
 gem 'magick_columns'
 gem 'validates_timeliness'
-
-# Deploy gems
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
 
 # Auth & Mailing Gems
 gem 'devise'
@@ -27,11 +22,20 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'kaminari-bootstrap'
+gem 'bootstrap-material-design'
 
+group :development, :test do
+  gem 'byebug'
+end
 
 group :development do
   gem 'thin'
+  gem 'web-console', '~> 2.0'
+
+  # Deploy gems
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
 end
 
 group :test do
