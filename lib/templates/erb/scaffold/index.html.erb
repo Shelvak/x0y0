@@ -28,7 +28,7 @@
   <%%= paginate @<%= plural_table_name %> %>
 <%% end %>
 
-<div class="form-actions">
+<div class="panel-footer">
   <%%= link_to(
     t('view.<%= plural_table_name %>.new', default: :'label.new'),
     new_<%= singular_table_name %>_path, class: 'btn btn-primary'

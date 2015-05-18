@@ -7,7 +7,7 @@
 </p>
 <%- end -%>
 
-<div class="form-actions">
+<div class="panel-footer">
   <%%= link_to t('label.edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) if can? :update, @<%= singular_table_name %> %> |
   <%%= link_to t('label.list'), <%= index_helper %>_path %>
 </div>

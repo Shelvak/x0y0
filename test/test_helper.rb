@@ -13,7 +13,7 @@ class ActiveSupport::TestCase
 
   def assert_equal_messages(instance, attr, validate, extra = {})
     assert_equal [error_message_from_model(instance, attr, validate, extra)],
-      instance.errors[attr]
+      instance.errors[attr], attr
   end
 end
 
@@ -56,7 +56,7 @@ class ActionDispatch::IntegrationTest
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: '123456'
 
-    find('.btn-primary.submit').click
+    find('input.btn').click
 
     assert_equal users_path, current_path
 

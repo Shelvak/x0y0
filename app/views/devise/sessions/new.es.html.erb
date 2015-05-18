@@ -1,25 +1,16 @@
-<div class="row">
-  <div class="public_form_container col-md-offset-4 col-md-4">
-    <h3>Inicio de sesión</h3>
+<% @title = 'Inicio de sesión' %>
 
-    <div class="row">
-      <div class="well">
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-nputs">
-            <%= f.input :email, input_html: { autofocus: true } %>
-            <%= f.input :password %>
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          </div>
-
-          <div class="form-actions">
-            <%= show_button_dropdown(
-              f.submit('Ingresar', class: 'btn btn-material-teal'),
-              [password_recovery_link]
-            ) %>
-        </div>
-        <% end %>
-      </div>
-    </div>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email, input_html: { autofocus: true } %>
+    <%= f.input :password %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
-</div>
 
+  <div class="panel-footer">
+    <%= show_button_dropdown(
+      f.submit('Ingresar', class: 'btn btn-material-teal'),
+      devise_links_es
+    ) %>
+  </div>
+<% end %>

@@ -1,31 +1,22 @@
-<div class="row">
-  <div class="col-md-4 hidden-xs">
-    &nbsp;
-  </div>
-  <div class="public_form_container col-md-4">
-    <h3>¿Olvidaste tu contraseña?</h3>
-    
-    <p>
-      Ingresa debajo tu dirección de correo y te enviaremos instrucciones para
-      restablecerla
-    </p>
+<% @title = '¿Olvidaste tu contraseña?' %>
 
-    <div class="row">
-      <div class="col-md-12">
-        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :email, input_html: { autofocus: true, class: 'col-md-12' } %>
-          </div>
-          
-          <div class="form-actions">
-            <%= render partial: 'shared/hidden_submit', locals: { f: f } %>
-            <%= show_button_dropdown(
-              link_to('Enviarme las instrucciones', '#', class: 'btn btn-primary submit'),
-              devise_links_es
-            ) %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+<p>
+  Ingresa debajo tu dirección de correo y te enviaremos instrucciones para
+  restablecerla
+</p>
+
+<br />
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email, input_html: { autofocus: true, class: 'col-md-12' } %>
   </div>
-</div>
+
+  <div class="panel-footer">
+    <%= render partial: 'shared/hidden_submit', locals: { f: f } %>
+    <%= show_button_dropdown(
+      link_to('Enviarme las instrucciones', '#', class: 'btn btn-primary submit'),
+      devise_links_es
+    ) %>
+  </div>
+<% end %>

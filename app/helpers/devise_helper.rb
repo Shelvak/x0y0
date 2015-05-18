@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module DeviseHelper
   def devise_links_es
     @_devise_links = []
@@ -33,7 +31,8 @@ module DeviseHelper
   def add_link_to_forgot_password
     if devise_mapping.recoverable? && controller_name != 'passwords'
       @_devise_links << link_to(
-        '¿Olvidaste tu contraseña?', new_password_path(resource_name)
+        '¿Olvidaste tu contraseña?', new_password_path(resource_name),
+        id: 'reset-password'
       )
     end
   end
@@ -64,16 +63,6 @@ module DeviseHelper
           omniauth_authorize_path(resource_name, provider)
         )
       end
-    end
-  end
-
-  def password_recovery_link
-    if devise_mapping.recoverable?
-      link_to(
-        t('devise.recover.forgot_password'),
-        new_password_path(resource_name),
-        id: 'reset-password'
-      )
     end
   end
 end

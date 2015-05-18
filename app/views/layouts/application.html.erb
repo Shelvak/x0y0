@@ -16,9 +16,17 @@
 
     <div class="container">
       <%= render 'shared/menu' %>
-      <%= render 'shared/flash' if flash_message %>
 
-      <%= yield %>
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><h1 class="main"><%= @title %></h1></div>
+        <div class="panel-body">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
+  <footer>
+    <%= render 'shared/flash' if flash_message %>
+  </footer>
 </html>
