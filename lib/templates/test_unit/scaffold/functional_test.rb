@@ -50,7 +50,7 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
   end
 
   test "should update <%= singular_table_name %>" do
-    put :update, id: @<%= singular_table_name %>, 
+    put :update, id: @<%= singular_table_name %>,
       <%= "#{singular_table_name}: Fabricate.attributes_for(:#{singular_table_name}, attr: 'value')" %>
     assert_redirected_to <%= singular_table_name %>_url(assigns(:<%= singular_table_name %>))
   end
@@ -60,7 +60,7 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
       delete :destroy, id: <%= "@#{singular_table_name}" %>
     end
 
-    assert_redirected_to <%= index_helper %>_path
+    assert_redirected_to <%= index_helper %>_url
   end
 end
 <% end -%>
