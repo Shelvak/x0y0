@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.5'
 
 gem 'pg'
 gem 'kaminari'
 gem 'simple_form'
-gem 'paper_trail', '4.0.0.rc1'
+gem 'paper_trail', '4.0.1'
 gem 'magick_columns'
 gem 'validates_timeliness'
 
