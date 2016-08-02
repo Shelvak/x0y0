@@ -11,7 +11,7 @@ gem 'validates_timeliness'
 # Auth & Mailing Gems
 gem 'devise'
 gem 'devise-async'
-gem 'cancan'
+gem 'cancancan'
 gem 'role_model'
 gem 'sidekiq'
 # needed for sidekiq-web
