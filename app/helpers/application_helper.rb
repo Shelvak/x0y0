@@ -28,44 +28,4 @@ module ApplicationHelper
       )
     end
   end
-
-  def iconic_link(options = {}, *args)
-    opts = args.extract_options!
-
-    opts['data-show-tooltip'] ||= true
-    opts['title'] ||= options['title']
-
-    link_to *args, opts do
-      content_tag :span, nil, class: options['icon']
-    end
-  end
-
-  def link_to_show(*args)
-    options = args.extract_options!
-
-    options['title'] ||= t('label.show')
-    options['icon']  ||= 'mdi-action-search'
-
-    iconic_link options, *args
-  end
-
-  def link_to_edit(*args)
-    options = args.extract_options!
-
-    options['title'] ||= t('label.edit')
-    options['icon']  ||= 'mdi-editor-border-color'
-
-    iconic_link options, *args
-  end
-
-  def link_to_destroy(*args)
-    options = args.extract_options!
-
-    options['title'] ||= t('label.delete')
-    options['method'] ||= :delete
-    options['data-confirm'] ||= t('messages.confirmation')
-    options['icon']  ||= 'mdi-action-delete'
-
-    iconic_link options, *args
-  end
 end

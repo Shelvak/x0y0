@@ -33,6 +33,7 @@
     'no': 'No'
     close: 'Cerrar'
     delete: 'Eliminar'
+    destroy: 'Eliminar'
     edit: 'Editar'
     list: 'Listado'
     loading: 'Cargando...'

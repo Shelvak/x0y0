@@ -15,11 +15,13 @@
 //= require jquery_ujs
 //= require jquery-customs/jquery.ui.datepicker-es
 //= require jquery-customs/jquery-ui-timepicker-addon
-//= require underscore
-//= require inspector
-//= require common
-//= require date_pickers
-//= require endless_pagination
-//= require mobile
-//= require users
 //= require bootstrap
+//= require underscore
+//= require turbolinks
+//
+//= require autocomplete
+//= require dynamic_form
+//= require helpers
+//= require turbolinks_events
+//= require common
+//= require users

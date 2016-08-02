@@ -22,6 +22,7 @@ gem 'rack-protection', github: 'sinatra/rack-protection', require: false
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'turbolinks'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
