@@ -25,5 +25,3 @@ jQuery ($) ->
     $(this).find('.dropdown-toggle').addClass('disabled')
 
   Inspector.instance().load()
-
-  $.material.init()

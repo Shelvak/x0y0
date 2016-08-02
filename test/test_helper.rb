@@ -1,11 +1,19 @@
-ENV["RAILS_ENV"] = "test"
+ENV["RAILS_ENV"] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
 require 'sidekiq/testing/inline'
+require 'database_cleaner'
+require 'minitest/reporters'
+require 'capybara-screenshot/minitest'
+
+Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
 
 class ActiveSupport::TestCase
-  # Add more helper methods to be used by all tests here...
+	ActiveRecord::Migration.maintain_test_schema!
+	# set_fixture_class versions: PaperTrail::Version
+
+	fixtures :all
 
   def error_message_from_model(model, attribute, message, extra = {})
     ::ActiveModel::Errors.new(model).generate_message(attribute, message, extra)
@@ -18,7 +26,7 @@ class ActiveSupport::TestCase
 end
 
 class ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 end
 
 # Transactional fixtures do not work with Selenium tests, because Capybara
@@ -27,23 +35,38 @@ end
 DatabaseCleaner.strategy = :truncation
 
 class ActionDispatch::IntegrationTest
-  # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+  include Capybara::Screenshot::MiniTestPlugin
 
+  # Transactional fixtures do not work with Selenium tests, because Capybara
+  # uses a separate server thread, which the transactions would be hidden
+  # from. We hence use DatabaseCleaner to truncate our test database.
+  DatabaseCleaner.strategy = :truncation
   # Stop ActiveRecord from wrapping tests in transactions
-  self.use_transactional_fixtures = false
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  Capybara::Screenshot.webkit_options = { width: 1024, height: 768 }
+	Capybara::Screenshot.class_eval do
+		register_driver(:chrome) do |driver, path|
+			driver.browser.save_screenshot(path)
+		end
+	end
 
   setup do
-    Capybara.default_driver = :selenium
+    Capybara.javascript_driver = ENV['USE_CHROME'] ? :chrome : :selenium
+    Capybara.current_driver = Capybara.javascript_driver # :selenium by default
+    Capybara.server_port = '54163'
+    Capybara.app_host = 'http://localhost:54163'
+    Capybara.reset!    # Forget the (simulated) browser state
+    Capybara.default_max_wait_time = 4
   end
 
   teardown do
-    # Truncate the database
-    DatabaseCleaner.clean
-    # Forget the (simulated) browser state
-    Capybara.reset_sessions!
-    # Revert Capybara.current_driver to Capybara.default_driver
-    Capybara.use_default_driver
+    DatabaseCleaner.clean       # Truncate the database
+    Capybara.reset!             # Forget the (simulated) browser state
   end
 
   def login

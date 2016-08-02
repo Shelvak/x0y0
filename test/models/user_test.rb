@@ -81,38 +81,39 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test 'magick search' do
-    5.times { Fabricate(:user) { name { "magick_name" } } }
-    3.times { Fabricate(:user) { lastname { "magick_lastname" } } }
-    Fabricate(:user) {
-      name { "magick_name" }
-      lastname { "magick_lastname" }
-    }
+  # TODO: when we put textacular we will use this
+  #test 'magick search' do
+  #  5.times { Fabricate(:user) { name { "magick_name" } } }
+  #  3.times { Fabricate(:user) { lastname { "magick_lastname" } } }
+  #  Fabricate(:user) {
+  #    name { "magick_name" }
+  #    lastname { "magick_lastname" }
+  #  }
 
-    users = User.magick_search('magick')
+  #  users = User.magick_search('magick')
 
-    assert_equal 9, users.count
-    assert users.all? { |u| u.to_s =~ /magick/ }
+  #  assert_equal 9, users.count
+  #  assert users.all? { |u| u.to_s =~ /magick/ }
 
-    users = User.magick_search('magick_name')
+  #  users = User.magick_search('magick_name')
 
-    assert_equal 6, users.count
-    assert users.all? { |u| u.to_s =~ /magick_name/ }
+  #  assert_equal 6, users.count
+  #  assert users.all? { |u| u.to_s =~ /magick_name/ }
 
-    users = User.magick_search('magick_name magick_lastname')
+  #  users = User.magick_search('magick_name magick_lastname')
 
-    assert_equal 1, users.count
-    assert users.all? { |u| u.to_s =~ /magick_name magick_lastname/ }
+  #  assert_equal 1, users.count
+  #  assert users.all? { |u| u.to_s =~ /magick_name magick_lastname/ }
 
-    users = User.magick_search(
-      "magick_name #{I18n.t('magick_columns.or').first} magick_lastname"
-    )
+  #  users = User.magick_search(
+  #    "magick_name #{I18n.t('magick_columns.or').first} magick_lastname"
+  #  )
 
-    assert_equal 9, users.count
-    assert users.all? { |u| u.to_s =~ /magick_name|magick_lastname/ }
+  #  assert_equal 9, users.count
+  #  assert users.all? { |u| u.to_s =~ /magick_name|magick_lastname/ }
 
-    users = User.magick_search('nobody')
+  #  users = User.magick_search('nobody')
 
-    assert users.empty?
-  end
+  #  assert users.empty?
+  #end
 end
