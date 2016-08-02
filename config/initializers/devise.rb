@@ -10,7 +10,7 @@ Devise.setup do |config|
   # config.mailer = 'DeviseBackgrounder'
   #
   # Secret Token
-  config.secret_key = 'b9df23f8de9983ecca8369d88f32d14c36a113cf9fce84263e376e908a3916249f2f076993c8c1fe9b3c6ede93cba4eeea6db74763bda1d3a65c173a37810dd5'
+  config.secret_key = '635e5f820ef77dab148df1f621d17aa15386aa38b516771160d3876c7d31754415ad4263228bf76f9d406faa561e78f18dc6f88ca19b6223ab53247d83e900f2'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and

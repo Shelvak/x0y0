@@ -12,6 +12,7 @@ Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
 class ActiveSupport::TestCase
 	ActiveRecord::Migration.maintain_test_schema!
 	# set_fixture_class versions: PaperTrail::Version
+  self.use_transactional_tests = true
 
 	fixtures :all
 
@@ -29,14 +30,12 @@ class ActionController::TestCase
   include Devise::Test::ControllerHelpers
 end
 
-# Transactional fixtures do not work with Selenium tests, because Capybara
-# uses a separate server thread, which the transactions would be hidden
-# from. We hence use DatabaseCleaner to truncate our test database.
-DatabaseCleaner.strategy = :truncation
-
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include Capybara::Screenshot::MiniTestPlugin
+  include Devise::Test::IntegrationHelpers
+
+  self.use_transactional_tests = false
 
   # Transactional fixtures do not work with Selenium tests, because Capybara
   # uses a separate server thread, which the transactions would be hidden
@@ -56,12 +55,12 @@ class ActionDispatch::IntegrationTest
 	end
 
   setup do
-    Capybara.javascript_driver = ENV['USE_CHROME'] ? :chrome : :selenium
-    Capybara.current_driver = Capybara.javascript_driver # :selenium by default
+    Capybara.javascript_driver = ENV['USE_FIREFOX'] ? :selenium : :chrome
+    Capybara.current_driver = Capybara.javascript_driver # :chrome by default
     Capybara.server_port = '54163'
     Capybara.app_host = 'http://localhost:54163'
-    Capybara.reset!    # Forget the (simulated) browser state
     Capybara.default_max_wait_time = 4
+    Capybara.reset!    # Forget the (simulated) browser state
   end
 
   teardown do
@@ -70,14 +69,16 @@ class ActionDispatch::IntegrationTest
   end
 
   def login
-    user = Fabricate(:user, password: '123456')
+    user = User.create!(
+      Fabricate.attributes_for(:user, password: '123123')
+    )
 
     visit new_user_session_path
 
     assert_page_has_no_errors!
 
     fill_in 'user_email', with: user.email
-    fill_in 'user_password', with: '123456'
+    fill_in 'user_password', with: '123123'
 
     find('input.btn').click
 

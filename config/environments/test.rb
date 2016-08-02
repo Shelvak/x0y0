@@ -41,4 +41,6 @@ Rails.application.configure do
   config.active_support.test_order = :sorted
   # Raises error for missing translations
   config.action_view.raise_on_missing_translations = false
+
+  config.log_level = :debug
 end

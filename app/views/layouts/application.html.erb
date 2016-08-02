@@ -9,6 +9,7 @@
     <%= csrf_meta_tags %>
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-XYCjB+hFAjSbgf9yKUgbysEjaVLOXhCgATTEBpCqT1R3jvG5LGRAK5ZIyRbH5vpX" crossorigin="anonymous">
   </head>
 
   <body>
@@ -23,6 +24,7 @@
       <div class="panel panel-default">
         <div class="panel-heading"><h1 class="main"><%= @title %></h1></div>
         <div class="panel-body">
+
           <%= yield %>
         </div>
       </div>
