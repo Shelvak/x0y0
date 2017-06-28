@@ -3,7 +3,7 @@
 <%- attributes.each do |attribute| -%>
 <p>
   <strong><%%= <%= singular_table_name.camelize %>.human_attribute_name '<%= attribute.name %>' %></strong>:
-  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+  <%%= @<%= singular_table_name %>.<%= attribute.name.gsub(/_id$/, '') %> %>
 </p>
 <%- end -%>
 

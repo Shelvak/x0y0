@@ -15,7 +15,7 @@
       <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
         <tr>
           <%- attributes.each do |attribute| -%>
-          <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+          <td><%%= <%= singular_table_name %>.<%= attribute.name.gsub(/_id$/, '') %> %></td>
           <%- end -%>
           <td><%%= link_to_show <%= singular_table_name %> %></td>
           <td><%%= link_to_edit edit_<%= singular_table_name %>_path(<%= singular_table_name %>) if can? :update, <%= singular_table_name %> %></td>

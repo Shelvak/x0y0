@@ -56,17 +56,18 @@ class <%= controller_class_name %>Controller < ApplicationController
   # DELETE <%= route_url %>/1
   def destroy
     @<%= orm_instance.destroy %>
+
     redirect_to <%= index_helper %>_url, notice: t('view.<%= plural_table_name %>.correctly_destroyed')
   end
 
   private
 
-    def set_<%= singular_table_name %>
-      @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
-    end
+  def set_<%= singular_table_name %>
+    @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+  end
 
-    def <%= singular_table_name %>_params
-      params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |a| ":#{a.name}" }.join(', ') %>)
-    end
+  def <%= singular_table_name %>_params
+    params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |a| ":#{a.name}" }.join(', ') %>)
+  end
 end
 <% end -%>
