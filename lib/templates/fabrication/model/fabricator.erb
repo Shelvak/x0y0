@@ -1,19 +1,22 @@
 Fabricator(<%= class_name.match(/::/) ? "'#{class_name}'" : ":#{singular_name}" %>) do
 <% attributes.each do |attribute| -%>
-  <%- random = case attribute.type.to_s -%>
+  <% name = attribute.name %>
+  <%- attr_generator = case attribute.type.to_s -%>
     <%- when 'string' -%>
-    <%-  if attribute.name.match(/name/).present? -%>
+    <%-  if name.match(/name/).present? -%>
     <%-    'Faker::Name.name' -%>
     <%-  else -%>
-    <%-    attribute.name.match(/email/).present? ? 'Faker::Internet.email' : 'Faker::Lorem.sentence' -%>
+    <%-    name.match(/email/).present? ? 'Faker::Internet.email' : 'Faker::Lorem.sentence' -%>
     <%-  end -%>
     <%- when 'text' then 'Faker::Lorem.paragraph' -%>
     <%- when 'date' then 'Date.today' -%>
     <%- when 'datetime' then 'Time.now' -%>
-    <%- when *['decimal', 'float'] then '0.0' -%>
-    <%- when 'integer' then '0' -%>
+    <%- when *['decimal', 'float'] then 'rand * 1000' -%>
+    <%- when 'integer' then name.match(/_id$/) ?  "Fabricate(:#{name}).id" : 'rand(1000)' -%>
+    <%- when 'references' then "Fabricate(:#{name}).id" -%>
     <%- else  attribute.type -%>
   <%- end -%>
-  <%= "#{attribute.name} { #{random} }" %>
+
+  <%= "#{name.match(/_id$/) ? name.gsub(/_id$/, '') : name} { #{attr_generator} }" %>
 <% end -%>
 end

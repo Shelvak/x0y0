@@ -1,4 +1,4 @@
-class CreateVersions < ActiveRecord::Migration
+class CreateVersions < ActiveRecord::Migration[5.0]
   def change
     create_table :versions do |t|
       t.string   :item_type, null: false
@@ -8,7 +8,7 @@ class CreateVersions < ActiveRecord::Migration
       t.text     :object
       t.datetime :created_at
     end
-    
+
     add_index :versions, :whodunnit
     add_index :versions, [:item_type, :item_id]
   end

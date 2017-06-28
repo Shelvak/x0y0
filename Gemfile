@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0'
+gem 'rails', '5.1.2'
 
 gem 'pg'
 gem 'kaminari'
@@ -15,14 +15,13 @@ gem 'cancancan'
 gem 'role_model'
 gem 'sidekiq'
 # needed for sidekiq-web
-gem 'sinatra', github: 'sinatra/sinatra', require: false
-gem 'rack-protection', github: 'sinatra/rack-protection', require: false
+gem 'sinatra', require: false
 
 # Assets group
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-gem 'turbolinks'
+gem 'turbolinks'  # optional?
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'

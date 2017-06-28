@@ -10,9 +10,8 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require rails-ujs
 //= require jquery-ui
-//= require jquery_ujs
 //= require jquery-customs/jquery.ui.datepicker-es
 //= require jquery-customs/jquery-ui-timepicker-addon
 //= require bootstrap
