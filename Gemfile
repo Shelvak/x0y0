@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.1.2'
+gem 'rails', '~> 5.2.1'
 
 gem 'pg'
 gem 'kaminari'
@@ -10,7 +10,6 @@ gem 'validates_timeliness'
 
 # Auth & Mailing Gems
 gem 'devise'
-gem 'devise-async'
 gem 'cancancan'
 gem 'role_model'
 gem 'sidekiq'

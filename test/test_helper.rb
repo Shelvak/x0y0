@@ -10,11 +10,11 @@ require 'capybara-screenshot/minitest'
 Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
 
 class ActiveSupport::TestCase
-	ActiveRecord::Migration.maintain_test_schema!
-	# set_fixture_class versions: PaperTrail::Version
+  ActiveRecord::Migration.maintain_test_schema!
+  # set_fixture_class versions: PaperTrail::Version
   self.use_transactional_tests = true
 
-	fixtures :all
+  fixtures :all
 
   def error_message_from_model(model, attribute, message, extra = {})
     ::ActiveModel::Errors.new(model).generate_message(attribute, message, extra)
@@ -48,13 +48,14 @@ class ActionDispatch::IntegrationTest
   end
 
   Capybara::Screenshot.webkit_options = { width: 1024, height: 768 }
-	Capybara::Screenshot.class_eval do
-		register_driver(:chrome) do |driver, path|
-			driver.browser.save_screenshot(path)
-		end
-	end
+  Capybara::Screenshot.class_eval do
+    register_driver(:chrome) do |driver, path|
+      driver.browser.save_screenshot(path)
+    end
+  end
 
   setup do
+    Capybara.server = :webrick
     Capybara.javascript_driver = ENV['USE_FIREFOX'] ? :selenium : :chrome
     Capybara.current_driver = Capybara.javascript_driver # :chrome by default
     Capybara.server_port = '54163'
