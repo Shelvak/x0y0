@@ -13,5 +13,6 @@
  *= require main
  *= require autocomplete
  *= require bootstrap
+ *= require bootstrap-theme
  *= require fontawesome
 */

@@ -49,7 +49,7 @@ module DynamicFormHelper
     end
 
     def remove_icon
-      content_tag :span, nil, class: 'glyphicon glyphicon-remove-circle'
+      content_tag :i, '', class: 'fa fa-times-circle'
     end
 
     def destroy_field form
