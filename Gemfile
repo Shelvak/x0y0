@@ -21,19 +21,18 @@ gem 'sinatra', require: false
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-gem 'turbolinks'  # optional?
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
-
-group :development, :test do
-  gem 'byebug'
-end
+gem 'font-awesome-sass'
 
 # Helpers (at console)
 gem 'interactive_editor'
 gem 'awesome_print'
 
+group :development, :test do
+  gem 'byebug'
+end
 
 group :development do
   gem 'thin'

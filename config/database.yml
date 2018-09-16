@@ -4,6 +4,8 @@ defaults: &defaults
   pool: 5
   username: x0y0
   password: x0y0
+  host: localhost
+  port: 5432
 
 development:
   <<: *defaults
