@@ -1,4 +1,4 @@
-class <%= class_name %> < ApplicationRecord
+class <%= class_name %> < ApplicationModel
   has_paper_trail
 <% if attributes.any?(&:has_uniq_index?) -%>
   <% uniqueness_attrs = [] -%>

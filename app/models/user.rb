@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationModel
   include Users::Roles
 
   has_paper_trail
